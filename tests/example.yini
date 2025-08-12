@@ -1,0 +1,52 @@
+/* 
+a multiline comment :D 
+*/
+
+^ server
+
+    ^^ connection
+    host = 'localhost'
+    port = 8080  // Dev port
+    timeout = 30.5
+    retry_count = 3
+
+    ^^ auth
+    enabled = true
+    methods = ['basic', 'oauth', 'jwt']
+
+        ^^^ credentials
+        username = 'admin'
+        password = 'secret'  // Change me!
+
+        ^^^ oauth
+        client_id = 'app123'
+        client_secret = 'secret456'
+        scopes = ['read', 'write', 'admin']
+
+^ database
+    driver = 'postgresql'
+    host = 'db.example.com'
+    port = 5432
+    name = 'myapp'
+    ssl_enabled = true
+
+    ^^ pool
+    min_connections = 5
+    max_connections = 20
+    idle_timeout = 300.0
+
+^ logging
+    level = 'info'  // debug, info, warn, error
+    outputs = ['console', 'file']
+    
+    ^^ file
+    path = '/var/log/app.log'
+    max_size = 104857600  // 100MB in bytes
+    rotate = true
+
+^ features
+    experimental = false
+    beta_features = ['new_ui', 'advanced_search']
+    feature_flags = [true, false, true, false] // To-Do ; remove magic numbers
+
+// `/END` isnt supported, seems redundant as EOF is sutable enough
